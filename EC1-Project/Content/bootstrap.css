@@ -1608,8 +1608,8 @@ pre code {
   margin-left: auto;
 }
 .row {
-  margin-right: -15px;
-  margin-left: -15px;
+    margin-right: -15px;
+    margin-left: -15px;
 }
 .row-no-gutters {
   margin-right: 0;
@@ -1671,6 +1671,7 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+   
 }
 .col-xs-1,
 .col-xs-2,
@@ -5037,6 +5038,7 @@ a.badge:focus {
   margin-bottom: 30px;
   color: inherit;
   background-color: #eeeeee;
+  
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -5055,6 +5057,8 @@ a.badge:focus {
   padding-right: 15px;
   padding-left: 15px;
   border-radius: 6px;
+    width: 652px;
+    margin-left: 202px;
 }
 .jumbotron .container {
   max-width: 100%;
@@ -5074,6 +5078,45 @@ a.badge:focus {
     font-size: 63px;
   }
 }
+.slider-frame{
+    overflow:hidden;
+    height: 800px;
+    width:1200px;
+    margin-left:360px;
+    margin-top:20px;
+}
+/* SLIDE ANIMATION*/
+@-webkit-keyframes slide_animation{
+    0%{left:0px}
+    10%{left:0px}
+    20%{left:1200px}
+    30%{left:1200px}
+    40%{left:2400px}
+    50%{left:2400px}
+    60%{left:1200px}
+    70%{left:1200px}
+    80%{left:0px}
+    90%{left:0px}
+    100%{left:0px}
+   }
+.slide-images{
+    width:3600px;
+    height: 800px;
+    margin: 0 0 0 -2400px;
+    position: relative;
+    -webkit-animation-name: slide_animation;
+    -webkit-transition-duration: 10s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-direction:alternate;
+    -webkit-animation-play-state: running;
+}
+.img-container{
+    height:800px;
+    width:2200px;
+    position:relative;
+    float:left;
+}
+/* SLIDE ANIMATION*/
 .thumbnail {
   display: block;
   padding: 4px;
@@ -6428,7 +6471,7 @@ button.close {
   color: #fff;
   text-decoration: none;
   outline: 0;
-  filter: alpha(opacity=90);
+  filter:alpha(opacity=90);
   opacity: 0.9;
 }
 .carousel-control .icon-prev,

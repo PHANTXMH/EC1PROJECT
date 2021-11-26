@@ -185,8 +185,11 @@ C:\Users\Admin\Desktop\GroupEC1\EC1-Project\bin\Newtonsoft.Json.xml
 C:\Users\Admin\Desktop\GroupEC1\EC1-Project\bin\Antlr3.Runtime.pdb
 C:\Users\Admin\Desktop\GroupEC1\EC1-Project\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\Admin\Desktop\GroupEC1\EC1-Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Admin\Desktop\GroupEC1\EC1-Project\obj\Debug\EC1-Project.csproj.AssemblyReference.cache
 C:\Users\Admin\Desktop\GroupEC1\EC1-Project\obj\Debug\EC1-Project.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Desktop\GroupEC1\EC1-Project\obj\Debug\EC1-Project.csproj.CopyComplete
 C:\Users\Admin\Desktop\GroupEC1\EC1-Project\obj\Debug\EC1-Project.dll
 C:\Users\Admin\Desktop\GroupEC1\EC1-Project\obj\Debug\EC1-Project.pdb
+C:\Users\Admin\Desktop\GroupEC1\EC1-Project\obj\Debug\EC1-Project.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\GroupEC1\EC1-Project\bin\Default.aspx
+C:\Users\Admin\Desktop\GroupEC1\EC1-Project\bin\Default.aspx.cs
+C:\Users\Admin\Desktop\GroupEC1\EC1-Project\bin\Default.aspx.designer.cs
