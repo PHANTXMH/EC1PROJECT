@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="FitnessUpToDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="chassisnum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FitnessUpToDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FitnessUpToDateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="FitnessUpToDateSoapIn">
+    <wsdl:part name="parameters" element="tns:FitnessUpToDate" />
+  </wsdl:message>
+  <wsdl:message name="FitnessUpToDateSoapOut">
+    <wsdl:part name="parameters" element="tns:FitnessUpToDateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FitnessWebServiceSoap">
+    <wsdl:operation name="FitnessUpToDate">
+      <wsdl:input message="tns:FitnessUpToDateSoapIn" />
+      <wsdl:output message="tns:FitnessUpToDateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FitnessWebServiceSoap" type="tns:FitnessWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FitnessUpToDate">
+      <soap:operation soapAction="http://tempuri.org/FitnessUpToDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FitnessWebServiceSoap12" type="tns:FitnessWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FitnessUpToDate">
+      <soap12:operation soapAction="http://tempuri.org/FitnessUpToDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FitnessWebService">
+    <wsdl:port name="FitnessWebServiceSoap" binding="tns:FitnessWebServiceSoap">
+      <soap:address location="https://localhost:44318/FitnessWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FitnessWebServiceSoap12" binding="tns:FitnessWebServiceSoap12">
+      <soap12:address location="https://localhost:44318/FitnessWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

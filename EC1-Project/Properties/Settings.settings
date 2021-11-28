@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EC1_Project.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="EC1_Project_Insurance_InsuranceWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://localhost:44318/InsuranceWebService.asmx</Value>
+    </Setting>
+    <Setting Name="EC1_Project_Fitness_FitnessWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://localhost:44318/FitnessWebService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

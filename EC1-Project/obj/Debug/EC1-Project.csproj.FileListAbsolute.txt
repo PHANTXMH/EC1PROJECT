@@ -89,8 +89,8 @@ C:\Users\marca\source\repos\EC1-Project\EC1-Project\bin\Newtonsoft.Json.xml
 C:\Users\marca\source\repos\EC1-Project\EC1-Project\bin\Antlr3.Runtime.pdb
 C:\Users\marca\source\repos\EC1-Project\EC1-Project\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\marca\source\repos\EC1-Project\EC1-Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\marca\source\repos\EC1-Project\EC1-Project\obj\Debug\EC1-Project.csproj.AssemblyReference.cache
 C:\Users\marca\source\repos\EC1-Project\EC1-Project\obj\Debug\EC1-Project.csproj.CoreCompileInputs.cache
 C:\Users\marca\source\repos\EC1-Project\EC1-Project\obj\Debug\EC1-Project.csproj.CopyComplete
 C:\Users\marca\source\repos\EC1-Project\EC1-Project\obj\Debug\EC1-Project.dll
 C:\Users\marca\source\repos\EC1-Project\EC1-Project\obj\Debug\EC1-Project.pdb
+C:\Users\marca\source\repos\EC1-Project\EC1-Project\obj\Debug\EC1-Project.csproj.AssemblyReference.cache

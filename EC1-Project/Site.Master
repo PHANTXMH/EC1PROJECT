@@ -8,12 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TAJ Fitness & Insurance</title>
 
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
@@ -38,6 +42,12 @@
             </Scripts>
         </asp:ScriptManager>
 
+        <!-- image should be above the nav Bar
+        -->
+
+        <div id="header">
+            <img src="images/logo.png" border="0" class="logo">
+        </div>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -57,15 +67,64 @@
                 </div>
             </div>
         </div>
+        <!--main content placeholder-->
         <div class="container body-content">
+            <main role="main" class="pb-3">
+                
+            </main>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Tax Administration Jamaica</p>
-            </footer>
+           
+            <!--main content placeholder-->
         </div>
-
+            <footer class="page-footer font-small unique-color-dark-center" id="footer" text-align="center">
+                <div style="background-color: #0c2f44;">
+                    <div class="container">
+                        <div class="row py-4 d-flex align-items-center">
+                            <!--grid column-->
+                            <div class="col-md-6 cd-lg-5 text-center text-md-left mb.4 mb.0"></div>
+                            <!--grid column-->
+                            <h6 style="color: antiquewhite;">Get connected with us on social networks!</h6>
+                        </div>
+                        <!--grid column-->
+                        <div class="flex-center">
+                            <!--facebook-->
+                            <a class="fb-ic">
+                                <i class="fab fa-facebook-f fa-lg white-text mr-4"></i>
+                            </a>
+                            <a class="tw-ic">
+                                <i class="fab fa-twitter fa-lg white-text mr-4"></i>
+                            </a>
+                            <a class="gplus-ic">
+                                <i class="fab fa-google-plus-g fa-lg white-text mr-4"></i>
+                            </a>
+                            <a class="li-ic">
+                                <i class="fab fa-linkedin-in fa-lg white-text mr-4"></i>
+                            </a>
+                            <a class="ins-ic">
+                                <i class="fab fa-instagram fa-lg white-text mr-4"></i>
+                            </a>
+                            <a class="pin-ic">
+                                <i class="fab fa-pintress fa-lg white-text mr-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright text-center py-3">&copy; <%: DateTime.Now.Year %> - Tax Administration Jamaica</div>
+            </footer>
+        <!-- Ensure that the footer always remains at the bottom of the page even if there is little or no contenton the page-->
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/js/site.js"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                var docHeight = $(window).height;
+                var footerHeight = $('#footer').height();
+                var footerTop = $('#footer').position().top + footerHeight;
+                if (footerTop < docHeight)
+                    $('#footer').css('margin.top', 10 + (docHeight - footerTop) + 'px')
+            });
+        </script>
     </form>
 </body>
 </html>
