@@ -13,6 +13,7 @@ namespace EC1_Project
     public class Global : HttpApplication
     {
         public static string dbcon = ConfigurationManager.ConnectionStrings["dbCon"].ConnectionString;
+        public static Users user;        
 
         void Application_Start(object sender, EventArgs e)
         {

@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AddRegistration.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -165,6 +166,9 @@
     </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="InsuranceWebService.asmx" />
+    <Content Include="Login.aspx" />
+    <Content Include="MVFS.aspx" />
+    <Content Include="MVIS.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -194,6 +198,8 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="UpdateRegistration.aspx" />
+    <Content Include="ViewRegistration.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <None Include="Web References\Fitness\FitnessWebService.wsdl" />
     <Content Include="Web References\Fitness\Reference.map">
@@ -207,6 +213,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddRegistration.aspx.cs">
+      <DependentUpon>AddRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddRegistration.aspx.designer.cs">
+      <DependentUpon>AddRegistration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -241,6 +254,27 @@
       <DependentUpon>InsuranceWebService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MVFS.aspx.cs">
+      <DependentUpon>MVFS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MVFS.aspx.designer.cs">
+      <DependentUpon>MVFS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MVIS.aspx.cs">
+      <DependentUpon>MVIS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MVIS.aspx.designer.cs">
+      <DependentUpon>MVIS.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -260,6 +294,21 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateRegistration.aspx.cs">
+      <DependentUpon>UpdateRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateRegistration.aspx.designer.cs">
+      <DependentUpon>UpdateRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs" />
+    <Compile Include="ViewRegistration.aspx.cs">
+      <DependentUpon>ViewRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewRegistration.aspx.designer.cs">
+      <DependentUpon>ViewRegistration.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

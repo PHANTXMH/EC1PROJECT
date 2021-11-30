@@ -11,7 +11,14 @@ namespace EC1_Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Global.user == null)
+            {
+                LoginLabel.Text = "Login";
+            }
+            else
+            {
+                LoginLabel.Text = "Log out";
+            }
         }
     }
 }
