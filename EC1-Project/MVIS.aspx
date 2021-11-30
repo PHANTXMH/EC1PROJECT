@@ -17,9 +17,9 @@
                 <h3>Enter your vehicle registration number or chassis number to check your vehicle insurance status</h3><hr /><br /><br />      
                     
                 <form id="form1" runat="server">
-                    <asp:TextBox ID="PlateTextBox" runat="server" placeholder="License Plate #"></asp:TextBox>&nbsp;&nbsp;
-                    <asp:TextBox ID="ChassisTextBox" runat="server" placeholder="Enter Chassis #"></asp:TextBox>&nbsp;&nbsp;
-                    <asp:Button ID="SearchButton" runat="server" Text="Search" style="background-color:green; color:white" OnClick="SearchButton_Click"/>
+                    <asp:TextBox   ID="PlateTextBox" runat="server" placeholder="License Plate #"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:TextBox   ID="ChassisTextBox" runat="server" placeholder="Enter Chassis #"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button   ID="SearchButton" runat="server" Text="Search" style="background-color:green; color:white" OnClick="SearchButton_Click"/>
                 </form><br /><br />               
                     <asp:Label ID="Label1" runat="server" ></asp:Label><br />                 
                    <asp:Image ID="Image1" runat="server" height="120" width="120"/><br /><br />

@@ -165,6 +165,16 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="images\errorimage.jpg" />
+    <Content Include="images\foundimage.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\pic1.jpg" />
+    <Content Include="images\pic2.png" />
+    <Content Include="images\pic3.png" />
+    <Content Include="images\pic4.jpg" />
+    <Content Include="images\pic5.jpg" />
+    <Content Include="images\pic6.jpg" />
+    <Content Include="images\user.png" />
     <Content Include="InsuranceWebService.asmx" />
     <Content Include="Login.aspx" />
     <Content Include="MVFS.aspx" />

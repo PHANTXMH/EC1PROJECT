@@ -1114,6 +1114,8 @@ figure {
 }
 img {
   vertical-align: middle;
+    height: 84px;
+    width: 97px;
 }
 .img-responsive,
 .thumbnail > img,
@@ -6465,6 +6467,29 @@ button.close {
 .carousel-control .icon-next:before {
   content: "\203a";
 }
+
+.txtbox {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: block;
+    background-color: #f0f8ff;
+    padding: 4px;
+    font-size: 16px;
+}
+.thick {
+    font-weight: bold;
+}
+.divbody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+
 .carousel-indicators {
   position: absolute;
   bottom: 10px;
