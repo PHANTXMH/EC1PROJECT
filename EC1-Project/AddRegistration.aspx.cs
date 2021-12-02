@@ -11,21 +11,25 @@ namespace EC1_Project
 {
     public partial class AddRegistration : System.Web.UI.Page
     {
-        int searchid;
-        int idfound;
+        int searchid;        
         bool notlinked = true;
         protected void Page_Load(object sender, EventArgs e)
-        {
-            idfound = 0;
+        {            
             if (Global.user == null)
             {
                 Response.Redirect("Login.aspx");
             }
 
+            MessageLabel.Visible = false;                          
+            LinkButton.Visible = false;
+                      
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void SearchButtonClick(object sender, EventArgs e)
         {
+            LinkButton.Visible = false;
+            MessageLabel.Visible = false;
+
             try
             {
                 searchid = int.Parse(SearchTextBox.Text.Trim());
@@ -45,63 +49,90 @@ namespace EC1_Project
                     con.Open();
                 }
 
-                cmd = new NpgsqlCommand("SELECT * FROM vehicle JOIN registration ON vehicle.registrationid = registration.id WHERE registration.id = @id;", con);
+                cmd = new NpgsqlCommand("SELECT registration.id, users.fname, users.lname, registration.expdate, vehicle.licenseplatenumber," +
+                " vehicle.chassisnumber, vehicle.vehiclemake, vehicle.vehicletype FROM user_registration JOIN users ON" +
+                " users.id = user_registration.userid JOIN registration ON registration.id = user_registration.registrationid JOIN vehicle ON" +
+                " vehicle.registrationid = user_registration.registrationid WHERE registration.id = @id;",con);
                 cmd.Parameters.AddWithValue("@id", searchid);
-                reader = cmd.ExecuteReader();
+                reader = cmd.ExecuteReader();                
 
                 if (reader.Read())
                 {
-                    
-                    idfound = int.Parse(reader.GetValue(8).ToString());
                     Label idLabel = new Label();
-                    idLabel.Text = "ID: " + idfound.ToString();
+                    Label nameLabel = new Label();
+                    DropDownList dropDownList = new DropDownList();
+                    Label expLabel = new Label();
+                    Label vehiclemake = new Label();
+                    Label vehicletype = new Label();
+                    Label chassisnum = new Label();
+                    Label lpnum = new Label();
+                    Session["idfound"] = reader.GetValue(0).ToString();                    
+                    
+                    idLabel.Text = "ID: " + Session["idfound"].ToString();
                     PlaceHolder1.Controls.Add(idLabel);
                     PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
 
-                    Label expLabel = new Label();
-                    expLabel.Text = "Expired-At: " + reader.GetValue(9).ToString();
+                    
+                    nameLabel.Text = "Name/s on Registration: ";
+                    PlaceHolder1.Controls.Add(nameLabel);
+
+                    dropDownList.Dispose();
+                    dropDownList.Items.Add(reader["fname"].ToString() + " " + reader["lname"].ToString());                    
+                    PlaceHolder1.Controls.Add(dropDownList);
+                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+
+                    
+                    expLabel.Text = "Expired-At: " + reader.GetValue(3).ToString();
                     PlaceHolder1.Controls.Add(expLabel);
                     PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
 
-                    Label vehiclemake = new Label();
-                    vehiclemake.Text = "Vehicle Make: " + reader.GetValue(3).ToString();
+                    
+                    vehiclemake.Text = "Vehicle Make: " + reader.GetValue(6).ToString();
                     PlaceHolder1.Controls.Add(vehiclemake);
                     PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
 
-                    Label vehicletype = new Label();
-                    vehicletype.Text = "Vehicle Type: " + reader.GetValue(4).ToString();
+                    
+                    vehicletype.Text = "Vehicle Type: " + reader.GetValue(7).ToString();
                     PlaceHolder1.Controls.Add(vehicletype);
                     PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
 
-                    Label chassisnum = new Label();
-                    chassisnum.Text = "Chassis #: " + reader.GetValue(2).ToString();
+                    
+                    chassisnum.Text = "Chassis #: " + reader.GetValue(5).ToString();
                     PlaceHolder1.Controls.Add(chassisnum);
                     PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
 
-                    Label lpnum = new Label();
-                    lpnum.Text = "License Plate #: " + reader.GetValue(1).ToString();
+                    
+                    lpnum.Text = "License Plate #: " + reader.GetValue(4).ToString();
                     PlaceHolder1.Controls.Add(lpnum);
                     PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
 
-                    Button button = new Button();
-                    button.Text = "Link";
-                    button.Click += new EventHandler(LinkButtonClick);
-                    PlaceHolder1.Controls.Add(button);
-                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));                   
-                                      
-                }                
+                    while (reader.Read())
+                    {
+                        dropDownList.Items.Add(reader["fname"].ToString() + " " + reader["lname"].ToString());
+                    }
+                   
+                    LinkButton.Visible = true;
+
+                }
+                else
+                {
+                    MessageLabel.Text = "Registration not found";
+                    MessageLabel.Visible = true;
+                }               
                 con.Close();                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Response.Write("<script>alert('" + ex.Message + "');</script>'");
                 con.Close();
             }
         }
         
         public void LinkButtonClick(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
-            /*NpgsqlConnection con = new NpgsqlConnection(Global.dbcon);
+            LinkButton.Visible = false;
+            MessageLabel.Visible = false;
+            NpgsqlConnection con = new NpgsqlConnection(Global.dbcon);
             NpgsqlCommand cmd;            
             try
             {
@@ -109,36 +140,36 @@ namespace EC1_Project
                 {
                     con.Open();
                 }
-
+               
                 cmd = new NpgsqlCommand("SELECT id from user_registration WHERE userid = @userid AND registrationid = @registrationid;", con);
                 cmd.Parameters.AddWithValue("@userid", Global.user.Id);
-                cmd.Parameters.AddWithValue("@registrationid",idfound);
-                NpgsqlDataReader reader = cmd.ExecuteReader();
+                cmd.Parameters.AddWithValue("@registrationid", int.Parse(Session["idfound"].ToString()));
+                NpgsqlDataReader reader = cmd.ExecuteReader();                
 
                 if (!reader.Read())                
-                {                    
+                {
+                    reader.Close();
                     cmd.CommandText = "INSERT INTO user_registration (userid,registrationid) VALUES (@userid, @registrationid);";
                     cmd.Parameters.AddWithValue("@userid", Global.user.Id);
-                    cmd.Parameters.AddWithValue("@registrationid", idfound);
+                    cmd.Parameters.AddWithValue("@registrationid", int.Parse(Session["idfound"].ToString()));
                     cmd.ExecuteNonQuery();
-                    con.Close();
+                    reader.Close();
                     Response.Redirect("ViewRegistration.aspx");
                 }
                 else
                 {
-                    notlinked = false;
+                    MessageLabel.Text = "Registration is already linked";
+                    MessageLabel.Visible = true;
                 }
                 con.Close();
             }
             catch (Exception ex)
             {
+                Response.Write("<script>alert('"+ex.Message+"');</script>'");
                 con.Close();
-            }*/
+            }
         }
 
-        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
-        {
-            args.IsValid = notlinked;
-        }
+        
     }
 }

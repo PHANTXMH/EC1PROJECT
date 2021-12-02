@@ -46,7 +46,7 @@
         -->
 
         <div id="header">
-            <img src="images/logo.png" border="0" class="logo">
+            <img src="images/logo.png"  class="tajlogo">
         </div>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -65,6 +65,8 @@
                         <li><a runat="server" href="AddRegistration.aspx">Link Registration</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a runnat="server" >
+                            <asp:Label ID="UserLabel" runat="server"></asp:Label></a></li>
                         <li><a runnat="server" href="Login.aspx">
                             <asp:Label ID="LoginLabel" runat="server"></asp:Label></a></li>                                           
                     </ul>

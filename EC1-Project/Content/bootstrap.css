@@ -4,6 +4,13 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+.tajlogo{
+    height: 127px;
+    width: 353px;
+    margin-top: -20px;
+    border: 0;
+}
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -1114,8 +1121,8 @@ figure {
 }
 img {
   vertical-align: middle;
-    height: 84px;
-    width: 97px;
+    height: 127px;
+    width: 142px;
 }
 .img-responsive,
 .thumbnail > img,
@@ -6469,10 +6476,10 @@ button.close {
 }
 
 .txtbox {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     display: block;
     background-color: #f0f8ff;
     padding: 4px;

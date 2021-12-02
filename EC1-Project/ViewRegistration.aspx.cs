@@ -84,7 +84,7 @@ namespace EC1_Project
 
                         Button button = new Button();
                         button.ID = rid.ToString();
-                        button.Text = "Update";
+                        button.Text = "Renew";
                         button.Click += new EventHandler(UpdateButtonClick);
                         PlaceHolder1.Controls.Add(button);
                         PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));

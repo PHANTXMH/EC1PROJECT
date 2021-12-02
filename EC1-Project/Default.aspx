@@ -10,7 +10,7 @@
         collect the revenue due in an equitable and efficient manner,<br /> contribute to a competitive business environment 
         and facilitate economic growth and development.</p>
 
-      <asp:Image runat="server" ImageUrl="images/pic2.png" Height="210px"></asp:Image>
+      <asp:Image runat="server" ImageUrl="images/pic2.png" height="300px" Width="400px"></asp:Image>
 
       <p><b>The Tax Administration Jamaica (TAJ) has successfully digitalized the Motor Vehicle Licencing & Registration process online,
           making use of technologies to enhance the interaction with customers and employees, and deliver excellent customer experience at the same time.

@@ -13,10 +13,13 @@ namespace EC1_Project
         {
             if (Global.user == null)
             {
+                UserLabel.Visible = false;
                 LoginLabel.Text = "Login";
             }
             else
             {
+                UserLabel.Visible = true;
+                UserLabel.Text = "Hi "+Global.user.Username+"!";
                 LoginLabel.Text = "Log out";
             }
         }
