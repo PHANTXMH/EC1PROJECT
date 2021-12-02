@@ -15,6 +15,7 @@ namespace EC1_Project
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Checks if a user is logged in before loading the page
             if(Global.user == null)
             {
                 Response.Redirect("Login.aspx");
@@ -30,6 +31,7 @@ namespace EC1_Project
                     con.Open();
                 }
 
+                //Searches database for all registrations associated with the logged in user
                 cmd = new NpgsqlCommand("SELECT registrationid FROM user_registration WHERE userid = @userid;",con);
                 cmd.Parameters.AddWithValue("@userid", Global.user.Id);
                 registrationIdReader = cmd.ExecuteReader();
@@ -43,7 +45,8 @@ namespace EC1_Project
                 registrationIdReader.Close();                
 
                 foreach(int regid in usersList)
-                {                   
+                {        
+                    //Retrieves all registration details based on the registration id 
                     cmd.CommandText = "SELECT registration.id, users.fname, users.lname, registration.expdate, vehicle.licenseplatenumber," +
                 " vehicle.chassisnumber, vehicle.vehiclemake, vehicle.vehicletype FROM user_registration JOIN users ON" +
                 " users.id = user_registration.userid JOIN registration ON registration.id = user_registration.registrationid JOIN vehicle ON" +
@@ -91,13 +94,13 @@ namespace EC1_Project
                         button.Text = "Renew";                        
                         button.Click += new EventHandler(UpdateButtonClick);
                         
-
+                        //Adds all the names of users linked to registration to a drop down list
                         while (registrationRecordReader.Read())
                         {
                             dropDownList.Items.Add(registrationRecordReader["fname"].ToString() + " " + registrationRecordReader["lname"].ToString());
                         }
 
-                        //Poplutate the page with registration details
+                        //Poplutates the page with registration details
                         PlaceHolder1.Controls.Add(idLabel);
                         PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
                         PlaceHolder1.Controls.Add(nameLabel);
@@ -142,6 +145,7 @@ namespace EC1_Project
             cmd.Parameters.AddWithValue("@id", id);
             NpgsqlDataReader reader = cmd.ExecuteReader();
 
+            //Checks if the registration's insurance and fitness are up to date before allowing user to update the registration
             if (reader.Read())
             {
                 if (insuranceWebService.InsuranceUpToDate(reader["chassisnumber"].ToString(), reader["licenseplatenumber"].ToString()))

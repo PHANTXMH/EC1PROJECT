@@ -15,6 +15,7 @@ namespace EC1_Project
         bool notlinked = true;
         protected void Page_Load(object sender, EventArgs e)
         {            
+            //Ensures a user is logged in before loading the page
             if (Global.user == null)
             {
                 Response.Redirect("Login.aspx");
@@ -30,6 +31,7 @@ namespace EC1_Project
             LinkButton.Visible = false;
             MessageLabel.Visible = false;
 
+            //ensures the variable searchid is of type integer
             try
             {
                 searchid = int.Parse(SearchTextBox.Text.Trim());

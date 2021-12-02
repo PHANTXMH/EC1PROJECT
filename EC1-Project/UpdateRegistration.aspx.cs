@@ -12,11 +12,13 @@ namespace EC1_Project
     {        
         protected void Page_Load(object sender, EventArgs e)
         {            
+            //Ensures a user is logged in before loading the page
             if(Global.user == null)
             {
                 Response.Redirect("Login.aspx");
             }
 
+            //Retrieves all the the registration details based on the registration id given
             NpgsqlCommand cmd = new NpgsqlCommand("SELECT users.fname, users.lname, registration.expdate, vehicle.licenseplatenumber," +
                 " vehicle.chassisnumber, vehicle.vehiclemake, vehicle.vehicletype FROM user_registration JOIN users ON" +
                 " users.id = user_registration.userid JOIN registration ON registration.id = user_registration.registrationid JOIN vehicle ON" +
@@ -27,6 +29,7 @@ namespace EC1_Project
             NpgsqlDataReader reader = cmd.ExecuteReader();
             reader.Read();            
 
+            //Only add text to the label object if it is the initial load of the page
             if (!IsPostBack)
             {
                 NameDropDownList.Items.Add(reader["fname"].ToString() + " " + reader["lname"].ToString());                
@@ -49,6 +52,7 @@ namespace EC1_Project
             cmd.Connection = new NpgsqlConnection(Global.dbcon);
             cmd.Connection.Open();
 
+            //Adds 6 months to the current expiration date of the registration
             if (MonthsRadioButton.Checked)
             {                        
                 cmd.CommandText = "UPDATE registration SET expdate = @expdate WHERE id = @id;";
@@ -62,6 +66,7 @@ namespace EC1_Project
                 }
             }
             else
+            //Adds a year to the current expiration date of the registration
             if (YearRadioButton.Checked)
             {
                 cmd.CommandText = "UPDATE registration SET expdate = @expdate WHERE id = @id;";
