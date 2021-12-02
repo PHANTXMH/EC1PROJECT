@@ -23,7 +23,7 @@ namespace EC1_Project
                 " vehicle.registrationid = user_registration.registrationid WHERE user_registration.registrationid = @id;");
             cmd.Connection = new NpgsqlConnection(Global.dbcon);
             cmd.Connection.Open();
-            cmd.Parameters.AddWithValue("@id", int.Parse(Session["registrationid"].ToString()));
+            cmd.Parameters.AddWithValue("@id", int.Parse(Session["registrationid"].ToString())); 
             NpgsqlDataReader reader = cmd.ExecuteReader();
             reader.Read();            
 

@@ -34,7 +34,7 @@ namespace EC1_Project
                 }
 
                 cmd = new NpgsqlCommand("SELECT * FROM users WHERE username = @username AND password = @password;", con);
-                cmd.Parameters.AddWithValue("@username",UsernameTextBox.Text.Trim());
+                cmd.Parameters.AddWithValue("@username",UsernameTextBox.Text.Trim().ToLower());
                 cmd.Parameters.AddWithValue("@password", PasswordTextBox.Text.Trim());
                 NpgsqlDataReader reader = cmd.ExecuteReader();
 

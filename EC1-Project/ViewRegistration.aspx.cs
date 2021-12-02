@@ -40,56 +40,82 @@ namespace EC1_Project
                 {
                     usersList.Add(int.Parse(registrationIdReader["registrationid"].ToString()));
                 }
-                registrationIdReader.Close();
-
-                rid = 1;
+                registrationIdReader.Close();                
 
                 foreach(int regid in usersList)
                 {                   
-                    cmd.CommandText = "SELECT * FROM vehicle JOIN registration ON vehicle.registrationid = registration.id WHERE registration.id = "+regid+";";
+                    cmd.CommandText = "SELECT registration.id, users.fname, users.lname, registration.expdate, vehicle.licenseplatenumber," +
+                " vehicle.chassisnumber, vehicle.vehiclemake, vehicle.vehicletype FROM user_registration JOIN users ON" +
+                " users.id = user_registration.userid JOIN registration ON registration.id = user_registration.registrationid JOIN vehicle ON" +
+                " vehicle.registrationid = user_registration.registrationid WHERE registration.id = "+regid+";";
                     //cmd.Parameters.AddWithValue("@id", regid);                    
                     registrationRecordReader = cmd.ExecuteReader();
                     
-                    if (registrationRecordReader.Read())
+                    if(registrationRecordReader.Read())
                     {
                         Label idLabel = new Label();
-                        idLabel.Text = "ID: " + registrationRecordReader.GetValue(8).ToString();
-                        PlaceHolder1.Controls.Add(idLabel);
-                        PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));                       
+                        rid = int.Parse(registrationRecordReader.GetValue(0).ToString());
+                        idLabel.Text = "ID: " + rid.ToString();
+                        
+
+                        Label nameLabel = new Label();
+                        nameLabel.Text = "Name/s on Registration: ";
+                        
+
+                        DropDownList dropDownList = new DropDownList();                        
+                        dropDownList.Items.Add(registrationRecordReader["fname"].ToString() + " " + registrationRecordReader["lname"].ToString());
+                        
 
                         Label expLabel = new Label();
-                        expLabel.Text = "Expired-At: " + registrationRecordReader.GetValue(9).ToString();
-                        PlaceHolder1.Controls.Add(expLabel);
-                        PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                        expLabel.Text = "Expired-At: " + registrationRecordReader.GetValue(3).ToString();
+                       
                        
                         Label vehiclemake = new Label();
-                        vehiclemake.Text = "Vehicle Make: " + registrationRecordReader.GetValue(3).ToString();
-                        PlaceHolder1.Controls.Add(vehiclemake);
-                        PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));                       
+                        vehiclemake.Text = "Vehicle Make: " + registrationRecordReader.GetValue(6).ToString();
+                                              
 
                         Label vehicletype = new Label();
-                        vehicletype.Text = "Vehicle Type: " + registrationRecordReader.GetValue(4).ToString();
-                        PlaceHolder1.Controls.Add(vehicletype);
-                        PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));                        
+                        vehicletype.Text = "Vehicle Type: " + registrationRecordReader.GetValue(7).ToString();
+                                              
 
                         Label chassisnum = new Label();
-                        chassisnum.Text = "Chassis #: " + registrationRecordReader.GetValue(2).ToString();
-                        PlaceHolder1.Controls.Add(chassisnum);
-                        PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));                        
+                        chassisnum.Text = "Chassis #: " + registrationRecordReader.GetValue(5).ToString();
+                                                
 
                         Label lpnum = new Label();
-                        lpnum.Text = "License Plate #: " + registrationRecordReader.GetValue(1).ToString();
-                        PlaceHolder1.Controls.Add(lpnum);
-                        PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                        lpnum.Text = "License Plate #: " + registrationRecordReader.GetValue(4).ToString();
+                        
 
                         Button button = new Button();
                         button.ID = rid.ToString();
-                        button.Text = "Renew";
+                        button.Text = "Renew";                        
                         button.Click += new EventHandler(UpdateButtonClick);
+                        
+
+                        while (registrationRecordReader.Read())
+                        {
+                            dropDownList.Items.Add(registrationRecordReader["fname"].ToString() + " " + registrationRecordReader["lname"].ToString());
+                        }
+
+                        //Poplutate the page with registration details
+                        PlaceHolder1.Controls.Add(idLabel);
+                        PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                        PlaceHolder1.Controls.Add(nameLabel);
+                        PlaceHolder1.Controls.Add(dropDownList);
+                        PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                        PlaceHolder1.Controls.Add(expLabel);
+                        PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                        PlaceHolder1.Controls.Add(vehiclemake);
+                        PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                        PlaceHolder1.Controls.Add(vehicletype);
+                        PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                        PlaceHolder1.Controls.Add(chassisnum);
+                        PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                        PlaceHolder1.Controls.Add(lpnum);
+                        PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
                         PlaceHolder1.Controls.Add(button);
                         PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
-                        PlaceHolder1.Controls.Add(new LiteralControl("<hr />"));
-                        rid++;
+                        PlaceHolder1.Controls.Add(new LiteralControl("<hr />"));                        
                     }
                     registrationRecordReader.Close();
                 }

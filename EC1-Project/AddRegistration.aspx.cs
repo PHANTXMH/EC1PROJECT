@@ -66,51 +66,62 @@ namespace EC1_Project
                     Label vehicletype = new Label();
                     Label chassisnum = new Label();
                     Label lpnum = new Label();
+
                     Session["idfound"] = reader.GetValue(0).ToString();                    
                     
                     idLabel.Text = "ID: " + Session["idfound"].ToString();
-                    PlaceHolder1.Controls.Add(idLabel);
-                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                    
 
                     
                     nameLabel.Text = "Name/s on Registration: ";
-                    PlaceHolder1.Controls.Add(nameLabel);
 
-                    dropDownList.Dispose();
-                    dropDownList.Items.Add(reader["fname"].ToString() + " " + reader["lname"].ToString());                    
-                    PlaceHolder1.Controls.Add(dropDownList);
-                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
 
-                    
+                    dropDownList.Items.Add(reader["fname"].ToString() + " " + reader["lname"].ToString());
+
+
+
+
                     expLabel.Text = "Expired-At: " + reader.GetValue(3).ToString();
-                    PlaceHolder1.Controls.Add(expLabel);
-                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                    
 
                     
                     vehiclemake.Text = "Vehicle Make: " + reader.GetValue(6).ToString();
-                    PlaceHolder1.Controls.Add(vehiclemake);
-                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                    
 
                     
                     vehicletype.Text = "Vehicle Type: " + reader.GetValue(7).ToString();
-                    PlaceHolder1.Controls.Add(vehicletype);
-                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                    
 
                     
                     chassisnum.Text = "Chassis #: " + reader.GetValue(5).ToString();
-                    PlaceHolder1.Controls.Add(chassisnum);
-                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                    
 
                     
                     lpnum.Text = "License Plate #: " + reader.GetValue(4).ToString();
-                    PlaceHolder1.Controls.Add(lpnum);
-                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
 
                     while (reader.Read())
                     {
                         dropDownList.Items.Add(reader["fname"].ToString() + " " + reader["lname"].ToString());
                     }
-                   
+
+
+                    //Populate the page with the registration details
+                    PlaceHolder1.Controls.Add(idLabel);
+                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                    PlaceHolder1.Controls.Add(nameLabel);
+                    PlaceHolder1.Controls.Add(dropDownList);
+                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                    PlaceHolder1.Controls.Add(expLabel);
+                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                    PlaceHolder1.Controls.Add(vehiclemake);
+                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                    PlaceHolder1.Controls.Add(vehicletype);
+                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                    PlaceHolder1.Controls.Add(chassisnum);
+                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+                    PlaceHolder1.Controls.Add(lpnum);
+                    PlaceHolder1.Controls.Add(new LiteralControl("</br><br/>"));
+
                     LinkButton.Visible = true;
 
                 }
