@@ -157,11 +157,11 @@ namespace EC1_Project
                     }
                     else
                     {
-                        Response.Write("<script>alert('The fitness for this vehicle is expired, please come into our offices and renew');</script>");
+                        Response.Write("<script>alert('Unable to renew registration because the fitness of the vehicle is expired.');</script>");
                     }
                 }else
                 {
-                    Response.Write("<script>alert('The fitness for this vehicle is expired, please come into our offices and renew');</script>");
+                    Response.Write("<script>alert('Unable to renew registration because the insurance of the vehicle is expired.');</script>");
                 }
             }    
             
